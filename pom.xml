@@ -12,7 +12,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!--<pentaho-kettle.version>5.2.0.2-84</pentaho-kettle.version>-->
     </properties>
 
     <dependencies>
@@ -80,7 +79,7 @@
                         <manifest>
                             <classpathPrefix>lib/</classpathPrefix>
                             <addClasspath>true</addClasspath>
-                            <mainClass>ru.lamoda.etl.App</mainClass>
+                            <mainClass>ru.lamoda.etl.Spark_TmpToParquet</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -106,7 +105,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
     </build>
 

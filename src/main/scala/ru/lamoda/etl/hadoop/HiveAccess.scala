@@ -18,25 +18,9 @@ class HiveAccess {
 
   def dropTmpTable(configParams: Config,  sqlContext: HiveContext): Unit = {
 
-    //val hiveContext =  configParams.getHiveContext
-
     sqlContext.sql("DROP TABLE "
         + " IF EXISTS "
         + configParams.tableName + configParams.inc_id
-      )
-  }
-
-  def createTmpTable(configParams: Config,  sqlContext: HiveContext): Unit = {
-
-    sqlContext.sql("CREATE TABLE IF NOT EXISTS "
-        + configParams.tableName
-        + " ( "
-        + configParams.filedListWithType
-        + " ) "
-        + " ROW FORMAT DELIMITED FIELDS TERMINATED BY '"
-        + configParams.fieldDelim
-        + "'"
-        + "LINES TERMINATED BY '\n'"
       )
   }
 

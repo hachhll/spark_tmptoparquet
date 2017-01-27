@@ -1,25 +1,22 @@
 package ru.lamoda.etl
 
 import org.apache.spark.sql.hive.HiveContext
-import org.apache.spark.{SparkConf, SparkContext}
 import ru.lamoda.etl.config.Config
 import ru.lamoda.etl.hadoop.HiveAccess
 
 /**
-  * Hello world!
+  * spark_tmptoparquet
   *
   */
-object App {
+object Spark_TmpToParquet {
   def main(args: Array[String]): Unit = {
+
+    println(args)
 
     val configParams = new Config(args)
 
-    val sparkConf = new SparkConf()
-      .setAppName("dwh_app")
-      .setMaster("yarn-client")
-      .set("spark.driver.allowMultipleContexts", "true")
-    val spcontext = new SparkContext(sparkConf)
-    val sqlContext = new HiveContext(spcontext)
+    val sparkContext = configParams.sparkContextLocal
+    val sqlContext = new HiveContext(sparkContext)
 
     sqlContext.setConf("hive.exec.dynamic.partition", "true")
     sqlContext.setConf("hive.exec.dynamic.partition.mode", "nonstrict")
@@ -31,10 +28,8 @@ object App {
       } finally {
         new HiveAccess().dropTmpTable(configParams, sqlContext) // Drop table if exist
       }
-    } catch {
-      case e: IllegalArgumentException => System.exit(1)
     } finally {
-      spcontext.stop()
+      sparkContext.stop()
     }
 
   }

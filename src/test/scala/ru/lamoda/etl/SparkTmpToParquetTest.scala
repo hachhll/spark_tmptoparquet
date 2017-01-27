@@ -6,7 +6,7 @@ import org.junit.Assert._
 /**
  * Unit test for simple App.
  */
-class AppTest {
+class SparkTmpToParquetTest {
     /**
      * Rigourous Test :-)
      */
