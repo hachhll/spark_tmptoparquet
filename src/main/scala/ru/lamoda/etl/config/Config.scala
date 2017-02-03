@@ -25,6 +25,7 @@ class Config(args: Array[String]) {
       spcontext.getConf.get("spark.executor.instances")
       spcontext.getConf.get("spark.executor.cores")
       spcontext.getConf.get("spark.default.parallelism")
+      spcontext.getConf.get("spark.eventLog.enabled")
     } catch {
       case e: java.util.NoSuchElementException => println (e.getMessage)
     }
