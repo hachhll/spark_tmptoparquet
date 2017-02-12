@@ -20,7 +20,8 @@ class HiveAccess {
 
     sqlContext.sql("DROP TABLE "
         + " IF EXISTS "
-        + configParams.tableName + configParams.inc_id
+        + configParams.tableName
+        + configParams.inc_id
       )
   }
 
@@ -45,10 +46,13 @@ class HiveAccess {
         + configParams.tableName
         + " PARTITION (created_part, inc_id_part) SELECT "
         + configParams.filedList
-        + ", " + " from_unixtime(unix_timestamp(created),'yyyyMMdd') "
-        + ", " + configParams.inc_id
+        + ", "
+        + " from_unixtime(unix_timestamp(created),'yyyyMMdd') "
+        + ", "
+        + configParams.inc_id
         + " FROM "
-        + configParams.tableName + configParams.inc_id
+        + configParams.tableName
+        + configParams.inc_id
       )
   }
 }
