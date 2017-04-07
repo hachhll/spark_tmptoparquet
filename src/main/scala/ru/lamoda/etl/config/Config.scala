@@ -9,7 +9,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   */
 class Config(args: Array[String]) {
 
-  val sparkContextLocal = getSparkContext
+  val sparkContextLocal: SparkContext = getSparkContext
 
   def getSparkContext: SparkContext = {
     val sparkConf = new SparkConf()
@@ -27,15 +27,17 @@ class Config(args: Array[String]) {
       spcontext.getConf.get("spark.default.parallelism")
       spcontext.getConf.get("spark.eventLog.enabled")
     } catch {
-      case e: java.util.NoSuchElementException => println (e.getMessage)
+      case e: java.util.NoSuchElementException => println(e.getMessage)
     }
     spcontext
   }
 
-  val tableName = getCommandLineParam(args, "=", "tableName")
-  val inc_id = getCommandLineParam(args, "=", "inc_id")
-  val filedList = getCommandLineParam(args, "=", "filedList")
-  val fieldDelim = getCommandLineParam(args, "=", "fieldDelim")
+  val tableName: String = getCommandLineParam(args, "=", "tableName")
+  val inc_id: String = getCommandLineParam(args, "=", "inc_id")
+  val filedList: String = getCommandLineParam(args, "=", "filedList")
+  val fieldDelim: String = getCommandLineParam(args, "=", "fieldDelim")
+  val groupName: String = getCommandLineParam(args, "=", "groupName")
+  val defaultLocation: String = getCommandLineParam(args, "=", "defaultLocation")
 
   def getMapValuesByDelim(argsArray: Array[String], delim: String): Map[String, String] = {
     argsArray.map {
@@ -44,7 +46,7 @@ class Config(args: Array[String]) {
   }
 
   def getCommandLineParam(argsArray: Array[String], delim: String, paramName: String): String = {
-    val ms = getMapValuesByDelim(argsArray, delim)
+    val ms: Map[String, String] = getMapValuesByDelim(argsArray, delim)
     var resValue = ""
     try {
       resValue = ms(paramName)
@@ -59,7 +61,7 @@ class Config(args: Array[String]) {
     for (fileConfig: String <- configFiles) {
       hadoopConf.addResource(new Path(fileConfig))
     }
-    val hdfs = FileSystem.get(hadoopConf)
+    val hdfs: FileSystem = FileSystem.get(hadoopConf)
     hdfs
   }
 }

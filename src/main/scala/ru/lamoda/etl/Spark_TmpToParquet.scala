@@ -1,5 +1,6 @@
 package ru.lamoda.etl
 
+import org.apache.spark.SparkContext
 import org.apache.spark.sql.hive.HiveContext
 import ru.lamoda.etl.config.Config
 import ru.lamoda.etl.hadoop.HiveAccess
@@ -15,7 +16,7 @@ object Spark_TmpToParquet {
 
     val configParams = new Config(args)
 
-    val sparkContext = configParams.sparkContextLocal
+    val sparkContext: SparkContext = configParams.sparkContextLocal
     val sqlContext = new HiveContext(sparkContext)
 
     sqlContext.setConf("hive.exec.dynamic.partition", "true")
@@ -25,7 +26,8 @@ object Spark_TmpToParquet {
       try {
         new HiveAccess().createTmpTableWithString(configParams, sqlContext) // Create tmp table if not exist
         new HiveAccess().insertIntoTableByCreated(configParams, sqlContext)
-      } finally {
+      }
+      finally {
         new HiveAccess().dropTmpTable(configParams, sqlContext) // Drop table if exist
       }
     } finally {
