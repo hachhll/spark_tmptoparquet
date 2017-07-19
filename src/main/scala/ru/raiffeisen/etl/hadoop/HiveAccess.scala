@@ -1,7 +1,7 @@
-package ru.lamoda.etl.hadoop
+package ru.raiffeisen.etl.hadoop
 
 import org.apache.spark.sql.hive.HiveContext
-import ru.lamoda.etl.config.Config
+import ru.raiffeisen.etl.config.Config
 
 /**
   * Created by gevorg.hachaturyan on 19/01/2017.

@@ -1,4 +1,4 @@
-package ru.lamoda.etl
+package ru.raiffeisen.etl
 
 import org.junit.Test
 import org.junit.Assert._

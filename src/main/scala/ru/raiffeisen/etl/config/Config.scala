@@ -1,4 +1,4 @@
-package ru.lamoda.etl.config
+package ru.raiffeisen.etl.config
 
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileSystem, Path}

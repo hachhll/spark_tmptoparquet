@@ -1,9 +1,9 @@
-package ru.lamoda.etl
+package ru.raiffeisen.etl
 
 import org.apache.spark.SparkContext
 import org.apache.spark.sql.hive.HiveContext
-import ru.lamoda.etl.config.Config
-import ru.lamoda.etl.hadoop.HiveAccess
+import ru.raiffeisen.etl.config.Config
+import ru.raiffeisen.etl.hadoop.HiveAccess
 
 /**
   * spark_tmptoparquet
