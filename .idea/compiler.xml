@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="spark_tmptoparquet" />
+        <module name="spark_app" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="spark_tmptoparquet" target="1.7" />
+      <module name="spark_app" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
